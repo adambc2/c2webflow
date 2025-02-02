@@ -1,0 +1,52 @@
+# Ignore Visio files
+*.vsd
+*.vsdx
+*.vsdm
+
+# Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+*.cache
+*.pdb
+*.obj
+*.log
+*.tlog
+*.idb
+*.ipch
+*.ilk
+*.aps
+*.ncb
+*.sdf
+*.sqlite
+*.opendb
+
+# Ignore build and debug directories
+[Bb]in/
+[Oo]bj/
+Debug/
+Release/
+x64/
+x86/
+ARM/
+
+# Ignore Rider and JetBrains project files (if applicable)
+.idea/
+*.iml
+
+# Ignore NuGet packages
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.bak
+*.log
+
+# Ignore Visual Studio Code workspace settings
+.vscode/
