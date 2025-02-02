@@ -9,7 +9,7 @@ $(document).ready(function(){
   
 	  // autoplay interval
 	  // 0 or 'false' prevents auto-sliding
-	  interval: 2000, 
+	  interval: 8000, 
 
 	  // duration of slide animation
 	  duration: 500,      
