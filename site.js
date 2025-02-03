@@ -3,8 +3,8 @@ $(document).ready(function(){
 	var caseStudiesSlider = $('.case-studies-slider').multislider({
         continuous: false, // Set to true for infinite scrolling
         slideAll: false,  
-        interval: 2000, 
-        duration: 500,      
+        interval: 4000, 
+        duration: 750,      
         hoverPause: true, 
         pauseAbove: null,   
         pauseBelow: null   

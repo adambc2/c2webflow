@@ -1,13 +1,17 @@
+@import "breakpoints.scss";
+
 :root {
     --Color-Light: #F4F1E7;
     --Color-Light-Inactive: #86847f;
     --Color-Dark: #1A1A1A;
 }
 .case-studies-header {
-    display:flex;
-    justify-content:space-between;
-    margin:-100px 0 60px 0;
-
+    display: flex;
+    justify-content: space-between;
+    margin:32px 0;
+    @include displayFrom(sm) {
+        margin: -100px 0 60px 0;
+    }
 }
 .ms-content {
     white-space:nowrap;
@@ -18,7 +22,12 @@
     }
 }
 .item {
-    width: 400px;
+    width: 300px;
+
+    @include displayFrom(sm) {
+        width: 400px;
+    }
+
     display: inline-flex;
     flex-direction: column;
     margin: 0px 8px;
@@ -40,8 +49,14 @@
         position: relative;
         overflow: hidden;
         border-radius: 4px;
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
+
+        @include displayFrom(sm) {
+            width: 400px;
+            height: 400px;
+        }
+
         display: flex;
         align-items: center;
         justify-content: center;

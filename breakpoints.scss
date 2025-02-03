@@ -1,0 +1,128 @@
+// Media Query and Breakpoints
+
+// Define Tailwind breakpoints
+$tailwind-breakpoints: ( xs: 480px, sm: 640px, md: 768px, lg: 1024px, xl: 1280px, '2xl': 1536px );
+
+// Mixin for min-width (from)
+@mixin displayFrom($size) {
+    $breakpoint: map-get($tailwind-breakpoints, $size);
+
+    @if $breakpoint {
+        @media (min-width: #{$breakpoint}) {
+            @content;
+        }
+    }
+    @else {
+        @error "Breakpoint `#{$size}` not found in \$tailwind-breakpoints map.";
+    }
+}
+
+// Mixin for max-width (to)
+@mixin displayTo($size) {
+    $breakpoint: map-get($tailwind-breakpoints, $size);
+
+    @if $breakpoint {
+        @media (max-width: #{$breakpoint}) {
+            @content;
+        }
+    }
+    @else {
+        @error "Breakpoint `#{$size}` not found in \$tailwind-breakpoints map.";
+    }
+}
+
+// Mixin for range (between)
+@mixin displayBetween($start, $end) {
+    $start-breakpoint: map-get($tailwind-breakpoints, $start);
+    $end-breakpoint: map-get($tailwind-breakpoints, $end);
+
+    @if $start-breakpoint and $end-breakpoint {
+        @media (min-width: #{$start-breakpoint}) and (max-width: #{$end-breakpoint}) {
+            @content;
+        }
+    }
+    @else {
+        @error "Breakpoints `#{$start}` and/or `#{$end}` not found in \$tailwind-breakpoints map.";
+    }
+}
+
+// Visibility Mixins
+@mixin visibleOnMobile {
+    @include displayTo(sm) {
+        display: inherit;
+    }
+
+    @include displayFrom(sm) {
+        display: none;
+    }
+}
+
+@mixin visibleOnTablet {
+    @include displayBetween(sm, lg) {
+        display: inherit;
+    }
+
+    @include displayTo(sm) {
+        display: none;
+    }
+
+    @include displayFrom(lg) {
+        display: none;
+    }
+}
+
+@mixin visibleOnDesktop {
+    @include displayFrom(md) {
+        display: inherit;
+    }
+
+    @include displayTo(md) {
+        display: none;
+    }
+}
+
+@mixin visibleOnMobileTablet {
+    @include displayTo(md) {
+        display: inherit;
+    }
+
+    @include displayFrom(md) {
+        display: none;
+    }
+}
+
+@mixin visibleOnTabletDesktop {
+    @include displayFrom(md) {
+        display: inherit;
+    }
+
+    @include displayTo(sm) {
+        display: none;
+    }
+}
+
+
+// Container Classes and Mixins
+
+// Base container mixin
+@mixin container($breakpoint: null) {
+    width:100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding, 1rem);
+    padding-right: var(--container-padding, 1rem);
+
+    @if $breakpoint {
+        $max-width: map-get($tailwind-breakpoints, $breakpoint);
+
+        @if $max-width {
+            @include displayFrom($breakpoint) {
+                max-width: #{$max-width};
+            }
+        }
+        @else {
+            @error "Breakpoint `#{$breakpoint}` not found in \$tailwind-breakpoints map.";
+        }
+    }
+}
