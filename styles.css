@@ -4,6 +4,16 @@
   --Color-Dark: #1A1A1A;
 }
 
+.case-studies-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: -100px 0 60px 0;
+}
+
 .ms-content {
   white-space: nowrap;
   overflow: visible;
@@ -29,7 +39,7 @@
   transition: opacity 0.3s ease-in-out 0.2s;
   --Active-Color: var(--Color-Light-Inactive);
 }
-.item:first-child {
+.item:hover, .item:first-child {
   --Active-Color: var(--Color-Light);
 }
 .item[style] {
@@ -88,9 +98,6 @@
 }
 .item .cs-info {
   line-height: 32px;
-}
-.item .cs-info:hover, .item .cs-info:first-child {
-  --Active-Color: var(--Color-Light);
 }
 .item .cs-info h3.cs-header {
   color: var(--Active-Color);

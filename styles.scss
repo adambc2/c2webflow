@@ -3,6 +3,12 @@
     --Color-Light-Inactive: #86847f;
     --Color-Dark: #1A1A1A;
 }
+.case-studies-header {
+    display:flex;
+    justify-content:space-between;
+    margin:-100px 0 60px 0;
+
+}
 .ms-content {
     white-space:nowrap;
     overflow:visible;
@@ -21,7 +27,8 @@
     transition: opacity .3s ease-in-out .2s;
     --Active-Color: var(--Color-Light-Inactive);
 
-    &:first-child {
+
+    &:hover, &:first-child {
         --Active-Color: var(--Color-Light);
     }
 
@@ -78,9 +85,6 @@
     .cs-info {
         line-height: 32px;
 
-        &:hover, &:first-child {
-            --Active-Color: var(--Color-Light);
-        }
 
         h3.cs-header {
             color: var(--Active-Color);
