@@ -1,29 +1,21 @@
 $(document).ready(function(){
 	console.log("case-studies-slider")
-	$('.case-studies-slider').multislider({
-	  // endless scrolling
-	  continuous: false,
+	var caseStudiesSlider = $('.case-studies-slider').multislider({
+        continuous: false, // Set to true for infinite scrolling
+        slideAll: false,  
+        interval: 2000, 
+        duration: 500,      
+        hoverPause: true, 
+        pauseAbove: null,   
+        pauseBelow: null   
+    });
 
-	  // slide all visible slides, or just one at a time
-	  slideAll: false,  
-  
-	  // autoplay interval
-	  // 0 or 'false' prevents auto-sliding
-	  interval: 8000, 
+    $('.case-studies-button.ms-right').on("click", function() {
+        caseStudiesSlider.data("next")(); // Move to the next slide
+    });
 
-	  // duration of slide animation
-	  duration: 500,      
-
-	  // pause carousel on hover
-	  hoverPause: true, 
-  
-	  // pause above specified screen width
-	  pauseAbove: null,   
-  
-	  // pause below specified screen width
-	  pauseBelow: null   
-  
-	})
-
+    $('.case-studies-button.ms-left').on("click", function() {
+        caseStudiesSlider.data("prev")(); // Move to the previous slide
+    });
 
 });

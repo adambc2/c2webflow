@@ -1,11 +1,12 @@
 :root {
   --Color-Light: #F4F1E7;
+  --Color-Light-Inactive: #86847f;
   --Color-Dark: #1A1A1A;
 }
 
 .ms-content {
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
 .ms-content.w-embed:before, .ms-content.w-embed:after {
   display: none;
@@ -24,6 +25,15 @@
   margin: 0px 8px;
   white-space: initial;
   height: 100%;
+  -webkit-transition: opacity 0.3s ease-in-out 0.2s;
+  transition: opacity 0.3s ease-in-out 0.2s;
+  --Active-Color: var(--Color-Light-Inactive);
+}
+.item:first-child {
+  --Active-Color: var(--Color-Light);
+}
+.item[style] {
+  opacity: 0;
 }
 .item .cs-image {
   position: relative;
@@ -63,6 +73,7 @@
           backdrop-filter: blur(2px);
   color: var(--Color-Dark);
   text-transform: uppercase;
+  font-size: 14px;
 }
 .item .cs-image img {
   position: absolute;
@@ -77,13 +88,25 @@
 }
 .item .cs-info {
   line-height: 32px;
-  color: var(--Color-Light);
 }
-.item .cs-info .cs-header {
+.item .cs-info:hover, .item .cs-info:first-child {
+  --Active-Color: var(--Color-Light);
+}
+.item .cs-info h3.cs-header {
+  color: var(--Active-Color);
   font-size: 22px;
   font-weight: 500;
+  margin: 1em 0;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+.item .cs-info h3.cs-header span.arrow {
+  content: "->";
 }
 .item .cs-info .cs-text {
+  color: var(--Active-Color);
   font-size: 18px;
   font-weight: 400;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }

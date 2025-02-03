@@ -1,10 +1,11 @@
 :root {
     --Color-Light: #F4F1E7;
+    --Color-Light-Inactive: #86847f;
     --Color-Dark: #1A1A1A;
 }
 .ms-content {
     white-space:nowrap;
-    overflow:hidden;
+    overflow:visible;
     &.w-embed:before, &.w-embed:after {
         display:none;
         content:'';
@@ -12,11 +13,22 @@
 }
 .item {
     width: 400px;
-    display:inline-flex;
-    flex-direction:column;
-    margin:0px 8px;
-    white-space:initial;
-    height:100%;
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0px 8px;
+    white-space: initial;
+    height: 100%;
+    transition: opacity .3s ease-in-out .2s;
+    --Active-Color: var(--Color-Light-Inactive);
+
+    &:first-child {
+        --Active-Color: var(--Color-Light);
+    }
+
+    &[style] {
+        opacity: 0;
+    }
+
     .cs-image {
         position: relative;
         overflow: hidden;
@@ -26,25 +38,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         .cs-tags {
             display: flex;
             gap: 10px;
             position: absolute;
-            top:8px;
-            left:8px;
+            top: 8px;
+            left: 8px;
             z-index: 5;
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
+
             li {
-                list-style:none;
+                list-style: none;
                 border-radius: 4px;
                 line-height: 24px;
                 padding: 0px 8px;
                 background: rgba(244, 241, 231, 0.80);
                 backdrop-filter: blur(2px);
-                color:var(--Color-Dark);
-                text-transform:uppercase;
+                color: var(--Color-Dark);
+                text-transform: uppercase;
+                font-size: 14px;
             }
         }
 
@@ -63,16 +77,29 @@
 
     .cs-info {
         line-height: 32px;
-        color: var(--Color-Light);
 
-        .cs-header {
+        &:hover, &:first-child {
+            --Active-Color: var(--Color-Light);
+        }
+
+        h3.cs-header {
+            color: var(--Active-Color);
             font-size: 22px;
             font-weight: 500;
+            margin: 1em 0;
+
+            span.arrow {
+                content: "->";
+            }
+
+            transition: color .2s ease-in-out;
         }
 
         .cs-text {
+            color: var(--Active-Color);
             font-size: 18px;
             font-weight: 400;
+            transition: color .2s ease-in-out;
         }
     }
 }
