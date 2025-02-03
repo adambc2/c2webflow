@@ -28,6 +28,10 @@
         width: 400px;
     }
 
+    @include displayFrom(lg) {
+        width: 450px;
+    }
+
     display: inline-flex;
     flex-direction: column;
     margin: 0px 8px;
@@ -55,6 +59,11 @@
         @include displayFrom(sm) {
             width: 400px;
             height: 400px;
+        }
+
+        @include displayFrom(lg) {
+            width: 450px;
+            height: 450px;
         }
 
         display: flex;
