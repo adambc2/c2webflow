@@ -2,7 +2,7 @@ $(document).ready(function(){
 	console.log("case-studies-slider")
 	$('.case-studies-slider').multislider({
 	  // endless scrolling
-	  continuous: true,
+	  continuous: false,
 
 	  // slide all visible slides, or just one at a time
 	  slideAll: false,  
