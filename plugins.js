@@ -1,3 +1,5 @@
+console.log("custom plugins.js loaded");
+
 /*
 *   MultiSlider | MIT License
 *

@@ -1,3 +1,4 @@
+@layer inline, external;
 :root {
   --Color-Light: #F4F1E7;
   --Color-Light-Inactive: #86847f;
@@ -124,7 +125,7 @@
 }
 .faq_2025 .faq_wrapper {
   position: relative;
-  padding-bottom: 2em;
+  padding-bottom: 4em;
 }
 .faq_2025 .faq_item {
   font-family: Manrope;
@@ -216,4 +217,249 @@
 .faq_2025 .faq_item .faq_answer a {
   min-width: 100%;
   text-align: center;
+}
+
+.social_proofs_outerwrapper .social_proof {
+  background-color: var(--Color-Dark);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.social_proofs_outerwrapper .social_proof_indicators {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+}
+.social_proofs_outerwrapper .social_proof_indicators .social_proof_indicator {
+  -webkit-transition: width 0.25s ease-in-out;
+  transition: width 0.25s ease-in-out;
+  cursor: pointer;
+}
+.social_proofs_outerwrapper .social_proof_wrapper.sized {
+  position: relative;
+}
+.social_proofs_outerwrapper .social_proof_wrapper.sized .social_proof {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.social_proofs_outerwrapper[data-active="1"] .social_proof:nth-child(1) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="1"] .social_proof_indicator:nth-child(1) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="2"] .social_proof:nth-child(2) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="2"] .social_proof_indicator:nth-child(2) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="3"] .social_proof:nth-child(3) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="3"] .social_proof_indicator:nth-child(3) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="4"] .social_proof:nth-child(4) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="4"] .social_proof_indicator:nth-child(4) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="5"] .social_proof:nth-child(5) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="5"] .social_proof_indicator:nth-child(5) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="6"] .social_proof:nth-child(6) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="6"] .social_proof_indicator:nth-child(6) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="7"] .social_proof:nth-child(7) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="7"] .social_proof_indicator:nth-child(7) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="8"] .social_proof:nth-child(8) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="8"] .social_proof_indicator:nth-child(8) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="9"] .social_proof:nth-child(9) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="9"] .social_proof_indicator:nth-child(9) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+.social_proofs_outerwrapper[data-active="10"] .social_proof:nth-child(10) {
+  opacity: 1;
+}
+.social_proofs_outerwrapper[data-active="10"] .social_proof_indicator:nth-child(10) {
+  background-color: #d9d9d9;
+  width: 72px;
+}
+
+.case-studies-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 32px 0;
+}
+@media (min-width: 640px) {
+  .case-studies-header {
+    margin: -100px 0 60px 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .container_about-us {
+    margin: -100px 0 60px 0;
+  }
+}
+
+.ms-content {
+  white-space: nowrap;
+  overflow: visible;
+}
+.ms-content.w-embed:before, .ms-content.w-embed:after {
+  display: none;
+  content: "";
+}
+
+.item {
+  width: 300px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0px 8px;
+  white-space: initial;
+  height: 100%;
+  -webkit-transition: opacity 0.3s ease-in-out 0.2s;
+  transition: opacity 0.3s ease-in-out 0.2s;
+  --Active-Color: var(--Color-Light-Inactive);
+}
+@media (min-width: 640px) {
+  .item {
+    width: 400px;
+  }
+}
+@media (min-width: 1024px) {
+  .item {
+    width: 450px;
+  }
+}
+.item:hover, .item:first-child {
+  --Active-Color: var(--Color-Light);
+}
+.item[style] {
+  opacity: 0;
+}
+.item .cs-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  width: 300px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media (min-width: 640px) {
+  .item .cs-image {
+    width: 400px;
+    height: 400px;
+  }
+}
+@media (min-width: 1024px) {
+  .item .cs-image {
+    width: 450px;
+    height: 450px;
+  }
+}
+.item .cs-image .cs-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+}
+.item .cs-image .cs-tags li {
+  list-style: none;
+  border-radius: 4px;
+  line-height: 24px;
+  padding: 0px 8px;
+  background: rgba(244, 241, 231, 0.8);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  color: var(--Color-Dark);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.item .cs-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.item .cs-info {
+  line-height: 32px;
+}
+.item .cs-info h3.cs-header {
+  color: var(--Active-Color);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 1em 0;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+.item .cs-info h3.cs-header span.arrow {
+  content: "->";
+}
+.item .cs-info .cs-text {
+  color: var(--Active-Color);
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
