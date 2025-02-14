@@ -1,0 +1,138 @@
+@import "breakpoints.scss";
+
+:root {
+    --Color-Light: #F4F1E7;
+    --Color-Light-Inactive: #86847f;
+    --Color-Dark: #1A1A1A;
+}
+
+.case-studies-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 32px 0;
+
+    @include displayFrom(sm) {
+        margin: -100px 0 60px 0;
+    }
+}
+
+.ms-content {
+    white-space: nowrap;
+    overflow: visible;
+
+    &.w-embed:before, &.w-embed:after {
+        display: none;
+        content: '';
+    }
+}
+
+.item {
+    width: 300px;
+
+    @include displayFrom(sm) {
+        width: 400px;
+    }
+
+    @include displayFrom(lg) {
+        width: 450px;
+    }
+
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0px 8px;
+    white-space: initial;
+    height: 100%;
+    transition: opacity .3s ease-in-out .2s;
+    --Active-Color: var(--Color-Light-Inactive);
+
+
+    &:hover, &:first-child {
+        --Active-Color: var(--Color-Light);
+    }
+
+    &[style] {
+        opacity: 0;
+    }
+
+    .cs-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        width: 300px;
+        height: 300px;
+
+        @include displayFrom(sm) {
+            width: 400px;
+            height: 400px;
+        }
+
+        @include displayFrom(lg) {
+            width: 450px;
+            height: 450px;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .cs-tags {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 5;
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style: none;
+                border-radius: 4px;
+                line-height: 24px;
+                padding: 0px 8px;
+                background: rgba(244, 241, 231, 0.80);
+                backdrop-filter: blur(2px);
+                color: var(--Color-Dark);
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+        }
+
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+
+    .cs-info {
+        line-height: 32px;
+
+
+        h3.cs-header {
+            color: var(--Active-Color);
+            font-size: 22px;
+            font-weight: 500;
+            margin: 1em 0;
+
+            span.arrow {
+                content: "->";
+            }
+
+            transition: color .2s ease-in-out;
+        }
+
+        .cs-text {
+            color: var(--Active-Color);
+            font-size: 18px;
+            font-weight: 400;
+            transition: color .2s ease-in-out;
+        }
+    }
+}
