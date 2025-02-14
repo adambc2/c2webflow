@@ -7,6 +7,10 @@
     --Color-Dark: #1A1A1A;
 }
 
+.sticky_text {
+    writing-mode: vertical-rl;
+}
+
 .main-wrapper {
     max-width: 100vw;
     overflow-x: hidden;
@@ -274,7 +278,20 @@
 
 .container_about-us {
     @include displayFrom(sm) {
-        margin: -100px 0 60px 0;
+        margin: -100px 0 0px 0;
+    }
+
+    .about-us-info {
+        padding: 52px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap:1em;
+    }
+
+    p {
+        max-width: 574px;
+        color: var(--text-color);
     }
 }
 .ms-content {
@@ -395,5 +412,76 @@
             font-weight: 400;
             transition: color .2s ease-in-out;
         }
+    }
+}
+
+
+.optimizely_container {
+    .optimizely_stats {
+        display: flex;
+        gap: 40px;
+
+        .icon_stat {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: var(--Color-Dark);
+            font-style: normal;
+        }
+
+        .icon_svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .icon_caption {
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 28px;
+        }
+
+        .icon_year {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 25px;
+            opacity: .6;
+        }
+
+        .stat_number {
+            font-size: 80px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 96px;
+        }
+
+        .stat_caption {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            opacity: .6;
+        }
+    }
+}
+
+.section_contact-form {
+    .contact_flex {
+
+        @include displayFrom(sm) {
+            margin: -100px 0 60px 0;
+        }
+    }
+
+    .contact_heading {
+        font-family: railroad-gothic-atf, sans-serif;
+        font-size: 92px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 104px; /* 113.043% */
+        text-transform: uppercase;
+        max-width:560px;
+    }
+    .contact_form {
+        flex-grow:1;
     }
 }

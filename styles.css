@@ -5,6 +5,12 @@
   --Color-Dark: #1A1A1A;
 }
 
+.sticky_text {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+
 .main-wrapper {
   max-width: 100vw;
   overflow-x: hidden;
@@ -334,8 +340,25 @@
 
 @media (min-width: 640px) {
   .container_about-us {
-    margin: -100px 0 60px 0;
+    margin: -100px 0 0px 0;
   }
+}
+.container_about-us .about-us-info {
+  padding: 52px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 1em;
+}
+.container_about-us p {
+  max-width: 574px;
+  color: var(--text-color);
 }
 
 .ms-content {
@@ -462,4 +485,71 @@
   font-weight: 400;
   -webkit-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
+}
+
+.optimizely_container .optimizely_stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+}
+.optimizely_container .optimizely_stats .icon_stat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+  color: var(--Color-Dark);
+  font-style: normal;
+}
+.optimizely_container .optimizely_stats .icon_svg {
+  width: 40px;
+  height: 40px;
+}
+.optimizely_container .optimizely_stats .icon_caption {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+}
+.optimizely_container .optimizely_stats .icon_year {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 25px;
+  opacity: 0.6;
+}
+.optimizely_container .optimizely_stats .stat_number {
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 96px;
+}
+.optimizely_container .optimizely_stats .stat_caption {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  opacity: 0.6;
+}
+
+@media (min-width: 640px) {
+  .section_contact-form .contact_flex {
+    margin: -100px 0 60px 0;
+  }
+}
+.section_contact-form .contact_heading {
+  font-family: railroad-gothic-atf, sans-serif;
+  font-size: 92px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 104px; /* 113.043% */
+  text-transform: uppercase;
+  max-width: 560px;
+}
+.section_contact-form .contact_form {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
