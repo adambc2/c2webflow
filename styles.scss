@@ -44,6 +44,12 @@
     justify-content: center;
 }
 
+.borderbottom {
+    @include displayTo(md) {
+        padding-bottom: 1em;
+        margin-bottom: 2em;
+    }
+}
 .railroad {
     font-family: "railroad-gothic-atf", sans-serif;
     font-weight: 500;
@@ -124,6 +130,28 @@
     .faq_wrapper {
         position: relative;
         padding-bottom: 4em;
+
+        @include displayTo(md) {
+            .faq_item, .faq_item:hover, .faq_item.active {
+                padding-inline: 0;
+                max-width: 100%;
+                width: 100%;
+                cursor:pointer;
+                opacity:1;
+            }
+
+            .faq_item.active{
+                .arrow {
+                    display:none;
+                }
+                &:hover .arrow {
+                    display:inline-block;
+                }
+            }
+            .faq_answer {
+                display: none !important;
+            }
+        }
     }
 
     .faq_item {
@@ -216,6 +244,21 @@
 
 
 .social_proofs_outerwrapper {
+    @include displayTo(md) {
+        svg {
+            max-width: 40px;
+            max-height:40px;
+        }
+        .social_proofs{
+            gap:1em;
+        }
+        .social_proof {
+            .social_proof_quote, .social_proof_attribute {
+                font-size: 20px;
+            }
+        }
+    }
+
     .social_proof {
         background-color: var(--Color-Dark);
         opacity: 0;
@@ -226,9 +269,10 @@
     .social_proof_indicators {
         display: flex;
         gap: 1em;
-        .social_proof_indicator{
-            transition:width .25s ease-in-out;
-            cursor:pointer;
+
+        .social_proof_indicator {
+            transition: width .25s ease-in-out;
+            cursor: pointer;
         }
     }
 
@@ -260,7 +304,27 @@
 
 
 
+.our_clients_container.container_2025 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* This replaces grid-column-gap and grid-row-gap */
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 65px;
+    padding-bottom: 65px;
 
+    @include displayTo(md) {
+        margin-top: 0;
+
+        .logo_row {
+            flex-direction: column; /* Ensures wrapping */
+            padding-top: 30px; /* Reduce padding */
+            padding-bottom: 30px;
+            gap: 1rem; /* Reduce spacing between items */
+            align-self:stretch;
+        }
+    }
+}
 
 
 
@@ -282,16 +346,25 @@
     }
 
     .about-us-info {
+       
         padding: 52px 0;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
         gap:1em;
+        @include displayTo(md){
+            flex-direction:column;
+        }
     }
 
     p {
         max-width: 574px;
         color: var(--text-color);
+    }
+    @include displayTo(md){
+        &.borderbottom {
+            margin-bottom:0;
+        }
     }
 }
 .ms-content {
@@ -417,6 +490,65 @@
 
 
 .optimizely_container {
+    @include displayTo(md) {
+        .optimizely_header {
+
+            svg {
+                height: auto;
+                max-height: 50px;
+            }
+        }
+
+        .optimizely_stats {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap:1em !important;
+            .icon_stat,
+            .number_stat {
+                width: calc(45% - 1em); 
+            }
+            padding-bottom:2em;
+        }
+    }
+
+    .dynamic-button {
+        &:before {
+            content: "->";
+            margin-right: .25em;
+        }
+
+        &:after {
+            content: 'LEARN MORE';
+
+            @include displayFrom(md) {
+                content: 'LEARN MORE ABOUT OUR OPTIMIZELY EXPERTISE';
+            }
+        }
+    }
+
+    .optimizely_header {
+        flex-direction: column;
+        margin-bottom: 2em;
+        gap: 1em;
+
+        @include displayFrom(md) {
+            flex-direction: row;
+            margin-bottom: 1em;
+            align-items: flex-end;
+            gap: 96px;
+        }
+    }
+
+    .optimizely_intro {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        &, p {
+            color: var(--Color-Dark);
+        }
+    }
+
     .optimizely_stats {
         display: flex;
         gap: 40px;
@@ -438,50 +570,75 @@
             font-size: 24px;
             font-style: normal;
             font-weight: 600;
-            line-height: 28px;
+            line-height: 1.1667em; /* 28px / 24px */
         }
 
         .icon_year {
             font-size: 24px;
             font-weight: 400;
-            line-height: 25px;
-            opacity: .6;
+            line-height: 1.0417em; /* 25px / 24px */
+            opacity: 0.6;
         }
 
         .stat_number {
-            font-size: 80px;
+            font-size: 40px;
+
+            @include displayFrom(lg) {
+                font-size: 60px;
+            }
+
+            @include displayFrom(xl) {
+                font-size: 80px;
+            }
+
+            white-space: nowrap;
             font-style: normal;
             font-weight: 400;
-            line-height: 96px;
+            line-height: 1.2em; /* 96px / 80px */
         }
 
         .stat_caption {
             font-size: 16px;
             font-weight: 400;
-            line-height: 20px;
-            opacity: .6;
+            line-height: 1.25em; /* 20px / 16px */
+            opacity: 0.6;
         }
     }
 }
 
 .section_contact-form {
     .contact_flex {
+        flex-direction: column;
 
         @include displayFrom(sm) {
             margin: -100px 0 60px 0;
+            flex-direction: row;
         }
     }
 
     .contact_heading {
         font-family: railroad-gothic-atf, sans-serif;
-        font-size: 92px;
         font-style: normal;
         font-weight: 400;
-        line-height: 104px; /* 113.043% */
+        line-height: 1.15em; /* 113.043% */
         text-transform: uppercase;
-        max-width:560px;
+        max-width: 560px;
+        font-size:60px;
+        padding-top:1em;
+
+        @include displayFrom(sm) {
+            font-size: 92px;
+            padding-top:0;
+        }
     }
+
     .contact_form {
-        flex-grow:1;
+        flex-grow: 1;
+    }
+}
+
+.icon_values {
+    @include displayTo(md){
+        flex-direction:column;
     }
 }

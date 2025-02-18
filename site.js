@@ -1,5 +1,20 @@
 ﻿console.log("custom site.js loaded");
 
+function updateBodyClass() {
+    if (window.innerWidth < 768) {
+        document.body.classList.add('mobile');
+    } else {
+        document.body.classList.remove('mobile');
+    }
+}
+
+// Run on page load
+updateBodyClass();
+
+// Run on window resize
+window.addEventListener('resize', updateBodyClass);
+
+
 jQuery(document).ready(function () {
     console.log("case-studies-slider");
     var caseStudiesSlider = $('.case-studies-slider').multislider({
@@ -46,11 +61,24 @@ jQuery(document).ready(function () {
         }, 5000); // Resumes cycling after 5 seconds
     });
 
-    $('.faq_question').on('mouseenter click', function () {
-        $(this).closest('.faq_wrapper').addClass("interacted");
+    $('.faq_question').on('click', function () {
+        var $faqWrapper = $(this).closest('.faq_wrapper');
         var $faqItem = $(this).closest('.faq_item'); // Get parent .faq_item
-        $faqItem.addClass('active').siblings('.faq_item').removeClass('active'); // Add active to current and remove from siblings
+        var $link = $faqItem.find('a.border-button'); // Find the link inside faq_item
+
+        // If body has class "mobile" and link exists, redirect to its href
+        if ($('body').hasClass('mobile') && $link.length) {
+            var url = $link.attr('href');
+            if (url && url !== "#") {
+                window.location.href = url;
+            }
+        } else {
+            // Default behavior - expand the FAQ
+            $faqWrapper.addClass("interacted");
+            $faqItem.addClass('active').siblings('.faq_item').removeClass('active'); // Add active to current and remove from siblings
+        }
     });
+
 
     $(".social_proofs_outerwrapper").each(function () {
         const $wrapper = $(this);
@@ -121,6 +149,11 @@ jQuery(document).ready(function () {
 
 function cycleFaqItems() {
     $('.faq_wrapper').each(function () {
+
+        if ($('body').hasClass('mobile')) {
+            return;
+        }
+
         var $wrapper = $(this);
 
         // Skip cycling if the wrapper has the "interacted" class
