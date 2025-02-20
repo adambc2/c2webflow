@@ -65,18 +65,18 @@ jQuery(document).ready(function () {
         var $faqWrapper = $(this).closest('.faq_wrapper');
         var $faqItem = $(this).closest('.faq_item'); // Get parent .faq_item
         var $link = $faqItem.find('a.border-button'); // Find the link inside faq_item
-
-        // If body has class "mobile" and link exists, redirect to its href
-        if ($('body').hasClass('mobile') && $link.length) {
-            var url = $link.attr('href');
+        var url = $link.attr('href');
             if (url && url !== "#") {
                 window.location.href = url;
             }
-        } else {
-            // Default behavior - expand the FAQ
-            $faqWrapper.addClass("interacted");
-            $faqItem.addClass('active').siblings('.faq_item').removeClass('active'); // Add active to current and remove from siblings
-        }
+        // If body has class "mobile" and link exists, redirect to its href
+        //if ($('body').hasClass('mobile') && $link.length) {
+            
+        //} else {
+        //    // Default behavior - expand the FAQ
+        //    $faqWrapper.addClass("interacted");
+        //    $faqItem.addClass('active').siblings('.faq_item').removeClass('active'); // Add /active to current and remove from siblings
+        //}
     });
 
 

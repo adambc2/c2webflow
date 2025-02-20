@@ -171,6 +171,9 @@
   --hover-background: #1A1A1A;
   --hover-text-color: #F4F1E7; /* Light contrast for readability */
 }
+.beige_section .borderbottom {
+  border-color: var(---Color-Dark);
+}
 
 .icon_value .icon_value_icon {
   width: 40px;
@@ -311,6 +314,10 @@
 .faq_2025 .faq_item .faq_answer a {
   min-width: 100%;
   text-align: center;
+  display: none;
+}
+.faq_2025 .faq_item .faq_answer a.added {
+  display: block;
 }
 
 @media (max-width: 768px) {
@@ -487,6 +494,10 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.case-studies-button {
+  color: var(--Color-Light);
 }
 
 @media (min-width: 640px) {
@@ -701,6 +712,7 @@
         -ms-flex-align: end;
             align-items: flex-end;
     gap: 96px;
+    margin: -100px 0 60px 0;
   }
 }
 .optimizely_container .optimizely_intro {
@@ -721,6 +733,7 @@
   display: -ms-flexbox;
   display: flex;
   gap: 40px;
+  padding-bottom: 60px;
 }
 .optimizely_container .optimizely_stats .icon_stat {
   display: -webkit-box;
