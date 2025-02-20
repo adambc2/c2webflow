@@ -34,6 +34,8 @@
 .border-button {
   --text-color: #F4F1E7;
   --background-color: transparent;
+  --hover-background: #F4F1E7;
+  --hover-text-color: #2C2C2C; /* Dark contrast for readability */
   background-color: var(--background-color);
   color: var(--text-color);
   border: 1px solid var(--text-color);
@@ -48,6 +50,18 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, -webkit-transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.border-button:hover {
+  background-color: var(--hover-background);
+  color: var(--hover-text-color);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px); /* Slight lift effect */
 }
 
 @media (max-width: 768px) {
@@ -67,6 +81,24 @@
   max-width: 100vw;
 }
 
+.hero_2025 {
+  position: relative;
+}
+.hero_2025 .border-button {
+  --text-color: #1A1A1A;
+  --background-color: #F45500;
+  --hover-background: #F4F1E7;
+  --hover-text-color: #1A1A1A; /* Light contrast for readability */
+}
+.hero_2025:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#1A1A1A), color-stop(64%, rgba(26, 26, 26, 0.56)), to(rgba(26, 26, 26, 0.08)));
+  background: linear-gradient(90deg, #1A1A1A 0%, rgba(26, 26, 26, 0.56) 64%, rgba(26, 26, 26, 0.08) 100%);
+}
 .hero_2025 .hero_info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -80,6 +112,11 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+.hero_2025 .hero_info p {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
 }
 @media (min-width: 768px) {
   .hero_2025 .hero_info {
@@ -131,9 +168,32 @@
 .beige_section .border-button {
   --text-color: #1A1A1A;
   --background-color: transparent;
+  --hover-background: #1A1A1A;
+  --hover-text-color: #F4F1E7; /* Light contrast for readability */
+}
+
+.icon_value .icon_value_icon {
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+.icon_value .icon_value_icon .w-embed {
+  width: 24px;
+  height: 24px;
+  overflow: visible;
 }
 
 .faq_2025 {
+  width: 100%;
   padding: 64px 0;
 }
 .faq_2025 .faq_wrapper {
@@ -188,6 +248,9 @@
 .faq_2025 .faq_item:hover .faq_answer, .faq_2025 .faq_item.active .faq_answer {
   opacity: 1;
   pointer-events: initial;
+}
+.faq_2025 .faq_item:hover .faq_answer {
+  z-index: 20;
 }
 .faq_2025 .faq_item .faq_question {
   display: -webkit-box;
@@ -376,6 +439,9 @@
   padding-top: 65px;
   padding-bottom: 65px;
 }
+.our_clients_container.container_2025 .logo_row {
+  width: 100%;
+}
 @media (max-width: 768px) {
   .our_clients_container.container_2025 {
     margin-top: 0;
@@ -394,6 +460,26 @@
   }
 }
 
+.case-studies-header-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1em;
+  margin: 32px 0;
+}
+@media (min-width: 640px) {
+  .case-studies-header-wrapper {
+    margin: -100px 0 60px 0;
+  }
+  .case-studies-header-wrapper p {
+    max-width: 50%;
+  }
+}
+
 .case-studies-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -401,12 +487,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 32px 0;
-}
-@media (min-width: 640px) {
-  .case-studies-header {
-    margin: -100px 0 60px 0;
-  }
 }
 
 @media (min-width: 640px) {
@@ -594,11 +674,11 @@
   content: "->";
   margin-right: 0.25em;
 }
-.optimizely_container .dynamic-button:after {
+.optimizely_container .dynamic-button:afterOLD {
   content: "LEARN MORE";
 }
 @media (min-width: 768px) {
-  .optimizely_container .dynamic-button:after {
+  .optimizely_container .dynamic-button:afterOLD {
     content: "LEARN MORE ABOUT OUR OPTIMIZELY EXPERTISE";
   }
 }

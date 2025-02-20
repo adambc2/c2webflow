@@ -58,7 +58,7 @@ jQuery(document).ready(function () {
         var $wrapper = $(this);
         setTimeout(function () {
             $wrapper.removeClass('interacted');
-        }, 5000); // Resumes cycling after 5 seconds
+        }, 10000); // Resumes cycling after 5 seconds
     });
 
     $('.faq_question').on('click', function () {

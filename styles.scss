@@ -32,6 +32,9 @@
 .border-button {
     --text-color: #F4F1E7;
     --background-color: transparent;
+    --hover-background: #F4F1E7;
+    --hover-text-color: #2C2C2C; /* Dark contrast for readability */
+
     background-color: var(--background-color);
     color: var(--text-color);
     border: 1px solid var(--text-color);
@@ -42,6 +45,15 @@
     display: inline-flex;
     gap: 8px;
     justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        background-color: var(--hover-background);
+        color: var(--hover-text-color);
+        transform: translateY(-2px); /* Slight lift effect */
+    }
 }
 
 .borderbottom {
@@ -61,12 +73,36 @@
 }
 
 .hero_2025 {
+    position: relative;
+
+    .border-button {
+        --text-color: #1A1A1A;
+        --background-color: #F45500;
+        --hover-background: #F4F1E7;
+        --hover-text-color: #1A1A1A; /* Light contrast for readability */
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 120%;
+        height: 100%;
+        background: linear-gradient(90deg, #1A1A1A 0%, rgba(26, 26, 26, 0.56) 64%, rgba(26, 26, 26, 0.08) 100%);
+    }
+
     .hero_info {
         display: flex;
         flex-direction: column;
         gap: 34px;
         z-index: 2;
         flex: 1;
+
+        p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 30px;
+        }
 
         @include displayFrom(md) {
             max-width: 50%;
@@ -121,10 +157,27 @@
     .border-button {
         --text-color: #1A1A1A;
         --background-color: transparent;
+        --hover-background: #1A1A1A;
+        --hover-text-color: #F4F1E7; /* Light contrast for readability */
     }
 }
-
+.icon_value {
+    .icon_value_icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        .w-embed {
+            width:24px;
+            height:24px;
+            overflow:visible;
+        }
+    }
+}
 .faq_2025 {
+    width:100%;
     padding: 64px 0;
 
     .faq_wrapper {
@@ -136,18 +189,20 @@
                 padding-inline: 0;
                 max-width: 100%;
                 width: 100%;
-                cursor:pointer;
-                opacity:1;
+                cursor: pointer;
+                opacity: 1;
             }
 
-            .faq_item.active{
+            .faq_item.active {
                 .arrow {
-                    display:none;
+                    display: none;
                 }
+
                 &:hover .arrow {
-                    display:inline-block;
+                    display: inline-block;
                 }
             }
+
             .faq_answer {
                 display: none !important;
             }
@@ -185,6 +240,11 @@
             .faq_answer {
                 opacity: 1;
                 pointer-events: initial;
+            }
+        }
+        &:hover {
+            .faq_answer {
+                z-index:20;
             }
         }
 
@@ -313,15 +373,20 @@
     padding-top: 65px;
     padding-bottom: 65px;
 
+    .logo_row {
+        width: 100%;
+    }
+
     @include displayTo(md) {
         margin-top: 0;
+
 
         .logo_row {
             flex-direction: column; /* Ensures wrapping */
             padding-top: 30px; /* Reduce padding */
             padding-bottom: 30px;
             gap: 1rem; /* Reduce spacing between items */
-            align-self:stretch;
+            align-self: stretch;
         }
     }
 }
@@ -329,15 +394,25 @@
 
 
 
+.case-studies-header-wrapper {
+    display:flex;
+    flex-direction:column;
+    gap:1em;
 
+    margin: 32px 0;
+    
+    @include displayFrom(sm) {
+        margin: -100px 0 60px 0;
+        p {
+            max-width:50%;
+        }
+    }
+
+
+}
 .case-studies-header {
     display: flex;
     justify-content: space-between;
-    margin: 32px 0;
-
-    @include displayFrom(sm) {
-        margin: -100px 0 60px 0;
-    }
 }
 
 .container_about-us {
@@ -517,7 +592,7 @@
             margin-right: .25em;
         }
 
-        &:after {
+        &:afterOLD {
             content: 'LEARN MORE';
 
             @include displayFrom(md) {
