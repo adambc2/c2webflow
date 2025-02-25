@@ -193,6 +193,7 @@
     opacity: 1;
   }
 }
+/*rotateX(calc(11deg + (var(--y-percent) * 6deg))) rotateY(calc(-3deg + (var(--x-percent) * -10deg))) rotateZ(calc(1deg + (var(--x-percent) * 4deg)))*/
 .scrolling_showcase {
   position: absolute;
   top: 0px;
@@ -201,8 +202,13 @@
   height: 100%;
   -webkit-transform-origin: top center;
           transform-origin: top center;
-  -webkit-transform: scale(calc(1 + var(--y-percent) * 0.5)) translateX(-10%) rotateX(calc(11deg + var(--y-percent) * 6deg)) rotateY(calc(-3deg + var(--x-percent) * -10deg)) rotateZ(calc(1deg + var(--x-percent) * 4deg)) translateX(-26px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-          transform: scale(calc(1 + var(--y-percent) * 0.5)) translateX(-10%) rotateX(calc(11deg + var(--y-percent) * 6deg)) rotateY(calc(-3deg + var(--x-percent) * -10deg)) rotateZ(calc(1deg + var(--x-percent) * 4deg)) translateX(-26px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  /*tilt and zoom*/
+  /*transform: scale(calc(1 + (var(--y-percent) * 0.5))) translateX(-10%)  rotateX(calc(11deg + (var(--y-percent) * 6deg))) rotateY(calc(-3deg + (var(--x-percent) * -10deg))) rotateZ(calc(1deg + (var(--x-percent) * 4deg)))*/
+  /*zoom only*/
+  /*transform: scale(calc(1 + (var(--y-percent) * 0.5))) translateX(-10%) rotateX(16deg) rotateY(-10deg) rotateZ(4deg);*/
+  /*tilt only*/
+  -webkit-transform: scale(calc(1 + var(--y-percent) * 0.05)) translateX(-10%) rotateX(calc(3deg + var(--y-percent) * 1.5deg)) rotateY(calc(-0.75deg + var(--x-percent) * -2.5deg)) rotateZ(calc(0.25deg + var(--x-percent) * 1deg));
+          transform: scale(calc(1 + var(--y-percent) * 0.05)) translateX(-10%) rotateX(calc(3deg + var(--y-percent) * 1.5deg)) rotateY(calc(-0.75deg + var(--x-percent) * -2.5deg)) rotateZ(calc(0.25deg + var(--x-percent) * 1deg));
   -webkit-perspective: calc(250px + var(--y-percent) * 100px);
           perspective: calc(250px + var(--y-percent) * 100px);
   -webkit-perspective-origin: 48% 62%;
@@ -228,7 +234,7 @@
   padding: 0.5em;
 }
 .scrolling_showcase .left_side img, .scrolling_showcase .right_side img {
-  border-radius: 1em;
+  border-radius: 4px;
   margin: 0.5em 0;
 }
 .scrolling_showcase .left_side {
@@ -236,20 +242,16 @@
   left: 0px;
   -webkit-animation: floatDownUp linear infinite;
           animation: floatDownUp linear infinite;
-  -webkit-animation-duration: 100s;
-          animation-duration: 100s;
+  -webkit-animation-duration: 200s;
+          animation-duration: 200s;
 }
 .scrolling_showcase .right_side {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-flow: column-reverse;
-          flex-flow: column-reverse;
   bottom: 0px;
   right: 0px;
   -webkit-animation: floatUpDown linear infinite;
           animation: floatUpDown linear infinite;
-  -webkit-animation-duration: 80s;
-          animation-duration: 80s;
+  -webkit-animation-duration: 160s;
+          animation-duration: 160s;
 }
 
 .hero_2025 {

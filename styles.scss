@@ -143,6 +143,7 @@
         opacity: 1;
     }
 }
+/*rotateX(calc(11deg + (var(--y-percent) * 6deg))) rotateY(calc(-3deg + (var(--x-percent) * -10deg))) rotateZ(calc(1deg + (var(--x-percent) * 4deg)))*/
 .scrolling_showcase {
     position: absolute;
     top: 0px;
@@ -150,12 +151,18 @@
     width: 100%;
     height: 100%;
     transform-origin: top center;
-    transform: scale(calc(1 + (var(--y-percent) * 0.5))) translateX(-10%) rotateX(calc(11deg + (var(--y-percent) * 6deg))) rotateY(calc(-3deg + (var(--x-percent) * -10deg))) rotateZ(calc(1deg + (var(--x-percent) * 4deg))) translateX(-26px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+    /*tilt and zoom*/
+    /*transform: scale(calc(1 + (var(--y-percent) * 0.5))) translateX(-10%)  rotateX(calc(11deg + (var(--y-percent) * 6deg))) rotateY(calc(-3deg + (var(--x-percent) * -10deg))) rotateZ(calc(1deg + (var(--x-percent) * 4deg)))*/
+    /*zoom only*/
+    /*transform: scale(calc(1 + (var(--y-percent) * 0.5))) translateX(-10%) rotateX(16deg) rotateY(-10deg) rotateZ(4deg);*/
+    /*tilt only*/
+    transform: scale(calc(1 + (var(--y-percent) * 0.05))) translateX(-10%) rotateX(calc(3deg + (var(--y-percent) * 1.5deg))) rotateY(calc(-.75deg + (var(--x-percent) * -2.5deg))) rotateZ(calc(.25deg + (var(--x-percent) * 1deg)));
     perspective: calc(250px + (var(--y-percent) * 100px));
     perspective-origin: 48% 62%;
-    transition:transform .1s ease;
-    opacity:0;
+    transition: transform .1s ease;
+    opacity: 0;
     animation: fadeIn .5s ease-out forwards;
+
     .left_side, .right_side {
         display: flex;
         flex-direction: column;
@@ -164,7 +171,7 @@
         padding: .5em;
 
         img {
-            border-radius: 1em;
+            border-radius: 4px;
             margin: .5em 0;
         }
     }
@@ -173,15 +180,14 @@
         top: 0px;
         left: 0px;
         animation: floatDownUp linear infinite;
-        animation-duration: 100s;
+        animation-duration: 200s;
     }
 
     .right_side {
-        flex-flow: column-reverse;
         bottom: 0px;
         right: 0px;
         animation: floatUpDown linear infinite;
-        animation-duration: 80s;
+        animation-duration: 160s;
     }
 }
 
