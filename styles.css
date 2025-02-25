@@ -185,8 +185,8 @@
   height: 100%;
   -webkit-transform-origin: top center;
           transform-origin: top center;
-  -webkit-transform: scale(1.2) rotateX(15deg) rotateY(calc(var(--x-percent) * -40deg)) rotateZ(calc(var(--x-percent) * 10deg));
-          transform: scale(1.2) rotateX(15deg) rotateY(calc(var(--x-percent) * -40deg)) rotateZ(calc(var(--x-percent) * 10deg));
+  -webkit-transform: scale(calc(1.2 + var(--y-percent) * 0.3)) rotateX(15deg) rotateY(calc(var(--x-percent) * -40deg)) rotateZ(calc(var(--x-percent) * 10deg)) translateX(-10%);
+          transform: scale(calc(1.2 + var(--y-percent) * 0.3)) rotateX(15deg) rotateY(calc(var(--x-percent) * -40deg)) rotateZ(calc(var(--x-percent) * 10deg)) translateX(-10%);
   -webkit-perspective: 399px;
           perspective: 399px;
   -webkit-perspective-origin: 50% 50%;
@@ -213,8 +213,8 @@
   left: 0px;
   -webkit-animation: floatDownUp linear infinite;
           animation: floatDownUp linear infinite;
-  -webkit-animation-duration: calc(50s + var(--y-percent) * 50s);
-          animation-duration: calc(50s + var(--y-percent) * 50s);
+  -webkit-animation-duration: 120s;
+          animation-duration: 120s; /* Kept the same */
   -webkit-transition: -webkit-animation-duration 0.5s ease-out;
   transition: -webkit-animation-duration 0.5s ease-out;
   transition: animation-duration 0.5s ease-out;
@@ -229,8 +229,8 @@
   right: 0px;
   -webkit-animation: floatUpDown linear infinite;
           animation: floatUpDown linear infinite;
-  -webkit-animation-duration: calc(40s + var(--y-percent) * 50s);
-          animation-duration: calc(40s + var(--y-percent) * 50s);
+  -webkit-animation-duration: 80s;
+          animation-duration: 80s; /* Kept the same */
   -webkit-transition: -webkit-animation-duration 0.5s ease-out;
   transition: -webkit-animation-duration 0.5s ease-out;
   transition: animation-duration 0.5s ease-out;
