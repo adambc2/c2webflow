@@ -134,7 +134,15 @@
         transform: translateY(0);
     }
 }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
 
+    to {
+        opacity: 1;
+    }
+}
 .scrolling_showcase {
     position: absolute;
     top: 0px;
@@ -145,7 +153,9 @@
     transform: scale(calc(1 + (var(--y-percent) * 0.5))) translateX(-10%) rotateX(calc(11deg + (var(--y-percent) * 6deg))) rotateY(calc(-3deg + (var(--x-percent) * -10deg))) rotateZ(calc(1deg + (var(--x-percent) * 4deg))) translateX(-26px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
     perspective: calc(250px + (var(--y-percent) * 100px));
     perspective-origin: 48% 62%;
-
+    transition:transform .1s ease;
+    opacity:0;
+    animation: fadeIn .5s ease-out forwards;
     .left_side, .right_side {
         display: flex;
         flex-direction: column;
@@ -163,8 +173,7 @@
         top: 0px;
         left: 0px;
         animation: floatDownUp linear infinite;
-        animation-duration: 120s; /* Kept the same */
-        transition: animation-duration 0.5s ease-out; /* Smooth animation duration change */
+        animation-duration: 100s;
     }
 
     .right_side {
@@ -172,8 +181,7 @@
         bottom: 0px;
         right: 0px;
         animation: floatUpDown linear infinite;
-        animation-duration: 80s; /* Kept the same */
-        transition: animation-duration 0.5s ease-out; /* Smooth animation duration change */
+        animation-duration: 80s;
     }
 }
 
@@ -182,6 +190,11 @@
     position: relative;
 
    
+    &.borderbottom{
+        @include displayTo(md){
+            margin-bottom:0;
+        }
+    }
     
     
     .border-button {
@@ -199,6 +212,9 @@
         width: 120%;
         height: 100%;
         background: linear-gradient(90deg, #1A1A1A 0%, rgba(26, 26, 26, 0.56) 64%, rgba(26, 26, 26, 0.08) 100%);
+        @include displayTo(md){
+            left:-10%;
+        }
     }
 
     .hero_info {

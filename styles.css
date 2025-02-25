@@ -177,6 +177,22 @@
             transform: translateY(0);
   }
 }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .scrolling_showcase {
   position: absolute;
   top: 0px;
@@ -191,6 +207,13 @@
           perspective: calc(250px + var(--y-percent) * 100px);
   -webkit-perspective-origin: 48% 62%;
           perspective-origin: 48% 62%;
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
+  opacity: 0;
+  -webkit-animation: fadeIn 0.5s ease-out forwards;
+          animation: fadeIn 0.5s ease-out forwards;
 }
 .scrolling_showcase .left_side, .scrolling_showcase .right_side {
   display: -webkit-box;
@@ -213,12 +236,8 @@
   left: 0px;
   -webkit-animation: floatDownUp linear infinite;
           animation: floatDownUp linear infinite;
-  -webkit-animation-duration: 120s;
-          animation-duration: 120s; /* Kept the same */
-  -webkit-transition: -webkit-animation-duration 0.5s ease-out;
-  transition: -webkit-animation-duration 0.5s ease-out;
-  transition: animation-duration 0.5s ease-out;
-  transition: animation-duration 0.5s ease-out, -webkit-animation-duration 0.5s ease-out; /* Smooth animation duration change */
+  -webkit-animation-duration: 100s;
+          animation-duration: 100s;
 }
 .scrolling_showcase .right_side {
   -webkit-box-orient: vertical;
@@ -230,15 +249,16 @@
   -webkit-animation: floatUpDown linear infinite;
           animation: floatUpDown linear infinite;
   -webkit-animation-duration: 80s;
-          animation-duration: 80s; /* Kept the same */
-  -webkit-transition: -webkit-animation-duration 0.5s ease-out;
-  transition: -webkit-animation-duration 0.5s ease-out;
-  transition: animation-duration 0.5s ease-out;
-  transition: animation-duration 0.5s ease-out, -webkit-animation-duration 0.5s ease-out; /* Smooth animation duration change */
+          animation-duration: 80s;
 }
 
 .hero_2025 {
   position: relative;
+}
+@media (max-width: 768px) {
+  .hero_2025.borderbottom {
+    margin-bottom: 0;
+  }
 }
 .hero_2025 .border-button {
   --text-color: #1A1A1A;
@@ -255,6 +275,11 @@
   height: 100%;
   background: -webkit-gradient(linear, left top, right top, from(#1A1A1A), color-stop(64%, rgba(26, 26, 26, 0.56)), to(rgba(26, 26, 26, 0.08)));
   background: linear-gradient(90deg, #1A1A1A 0%, rgba(26, 26, 26, 0.56) 64%, rgba(26, 26, 26, 0.08) 100%);
+}
+@media (max-width: 768px) {
+  .hero_2025:before {
+    left: -10%;
+  }
 }
 .hero_2025 .hero_info {
   display: -webkit-box;

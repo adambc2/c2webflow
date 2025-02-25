@@ -14,11 +14,35 @@ updateBodyClass();
 // Run on window resize
 window.addEventListener('resize', updateBodyClass);
 
+function UpdateRelativeMousePosition(event) {
+    let xPercent = event.clientX / window.innerWidth;
+    let yPercent = event.clientY / window.innerHeight;
+
+    // Set x and y percentages as CSS variables
+    $("body").css({
+        "--x-percent": xPercent,
+        "--y-percent": yPercent
+    });
+
+    // Calculate durations: faster animation at lower Y (top), slower at higher Y (bottom)
+    // Duration range: Left side (20s to 80s), Right side (15s to 60s)
+    const leftDuration = (1 - yPercent) * 60 + 20;  // from 80s to 20s
+    const rightDuration = (1 - yPercent) * 45 + 15; // from 60s to 15s
+
+    $(".left_side").css("--left-duration", `${leftDuration}s`);
+    $(".right_side").css("--right-duration", `${rightDuration}s`);
+}
 
 jQuery(document).ready(function () {
     console.log("case-studies-slider");
+
+    // Call the function on document ready with a mock event to set initial values
+    UpdateRelativeMousePosition({ clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+
+    $(document).mousemove(UpdateRelativeMousePosition);
+
     var caseStudiesSlider = $('.case-studies-slider').multislider({
-        continuous: false, // Set to true for infinite scrolling
+        continuous: false,
         slideAll: false,
         interval: 4000,
         duration: 750,
@@ -28,17 +52,15 @@ jQuery(document).ready(function () {
     });
 
     $('.case-studies-button.ms-right').on("click", function () {
-        caseStudiesSlider.data("next")(); // Move to the next slide
+        caseStudiesSlider.data("next")();
     });
 
     $('.case-studies-button.ms-left').on("click", function () {
-        caseStudiesSlider.data("prev")(); // Move to the previous slide
+        caseStudiesSlider.data("prev")();
     });
 
-
-
     var aboutUsSlider = $('.about-us-slider').multislider({
-        continuous: false, // Set to true for infinite scrolling
+        continuous: false,
         slideAll: false,
         interval: 2500,
         duration: 750,
@@ -46,7 +68,6 @@ jQuery(document).ready(function () {
         pauseAbove: null,
         pauseBelow: null
     });
-
 
     setInterval(cycleFaqItems, 3000);
 
@@ -58,27 +79,18 @@ jQuery(document).ready(function () {
         var $wrapper = $(this);
         setTimeout(function () {
             $wrapper.removeClass('interacted');
-        }, 10000); // Resumes cycling after 5 seconds
+        }, 10000);
     });
 
     $('.faq_question').on('click', function () {
         var $faqWrapper = $(this).closest('.faq_wrapper');
-        var $faqItem = $(this).closest('.faq_item'); // Get parent .faq_item
-        var $link = $faqItem.find('a.border-button'); // Find the link inside faq_item
+        var $faqItem = $(this).closest('.faq_item');
+        var $link = $faqItem.find('a.border-button');
         var url = $link.attr('href');
-            if (url && url !== "#") {
-                window.location.href = url;
-            }
-        // If body has class "mobile" and link exists, redirect to its href
-        //if ($('body').hasClass('mobile') && $link.length) {
-            
-        //} else {
-        //    // Default behavior - expand the FAQ
-        //    $faqWrapper.addClass("interacted");
-        //    $faqItem.addClass('active').siblings('.faq_item').removeClass('active'); // Add /active to current and remove from siblings
-        //}
+        if (url && url !== "#") {
+            window.location.href = url;
+        }
     });
-
 
     $(".social_proofs_outerwrapper").each(function () {
         const $wrapper = $(this);
@@ -86,18 +98,15 @@ jQuery(document).ready(function () {
         const $proofWrapper = $wrapper.find(".social_proof_wrapper");
         const totalIndicators = $indicators.length;
 
-        // Set initial data attributes
         $wrapper.attr("data-active", "1").attr("data-total", totalIndicators);
 
-        // Click event on indicators
         $indicators.each(function (index) {
             $(this).on("click", function () {
                 $wrapper.attr("data-active", index + 1);
-                $wrapper.addClass("clicked"); // Prevent auto-advance on user interaction
+                $wrapper.addClass("clicked");
             });
         });
 
-        // Auto-advance logic
         function autoAdvance() {
             if (!$wrapper.hasClass("clicked")) {
                 let currentActive = parseInt($wrapper.attr("data-active"), 10);
@@ -106,17 +115,14 @@ jQuery(document).ready(function () {
             }
         }
 
-        // Set interval to auto-advance every 3 seconds
         let interval = setInterval(autoAdvance, 3000);
 
         function updateQuoteSize() {
-            // Remove existing inline styles before recalculating
             $proofWrapper.removeClass("sized").css({ "height": "", "width": "" });
 
             let maxHeight = 0;
             let maxWidth = 0;
 
-            // Loop through each .social_proof and find the tallest and widest one
             $wrapper.find(".social_proof").each(function () {
                 let itemHeight = $(this).outerHeight(true);
                 let itemWidth = $(this).outerWidth(true);
@@ -130,52 +136,25 @@ jQuery(document).ready(function () {
                 }
             });
 
-            // Apply the max height and width to the .social_proof_wrapper and add "sized" class
             $proofWrapper.css({
                 "height": maxHeight + "px",
                 "width": maxWidth + "px"
             }).addClass("sized");
         }
 
-        // Run height calculation on load
         updateQuoteSize();
-
-
-        $(window).on("resize", function () {
-            updateQuoteSize();
-        });
-    });
-
-    $(document).mousemove(function (event) {
-        let xPercent = event.clientX / window.innerWidth;
-        let yPercent = event.clientY / window.innerHeight;
-
-        // Set x and y percentages as CSS variables
-        $("body").css({
-            "--x-percent": xPercent,
-            "--y-percent": yPercent
-        });
-
-        // Calculate durations: faster animation at lower Y (top), slower at higher Y (bottom)
-        // Duration range: Left side (20s to 80s), Right side (15s to 60s)
-        const leftDuration = (1 - yPercent) * 60 + 40;   // from 80s to 20s
-        const rightDuration = (1 - yPercent) * 45 + 45;  // from 60s to 15s
-
-        $(".left_side").css("--left-duration", `${leftDuration}s`);
-        $(".right_side").css("--right-duration", `${rightDuration}s`);
+        $(window).on("resize", updateQuoteSize);
     });
 });
 
 function cycleFaqItems() {
     $('.faq_wrapper').each(function () {
-
         if ($('body').hasClass('mobile')) {
             return;
         }
 
         var $wrapper = $(this);
 
-        // Skip cycling if the wrapper has the "interacted" class
         if ($wrapper.hasClass('interacted')) {
             return;
         }
@@ -184,10 +163,8 @@ function cycleFaqItems() {
         var $activeItem = $items.filter('.active');
 
         if ($activeItem.length === 0) {
-            // If no active item, add active class to the first one
             $items.first().addClass('active');
         } else {
-            // Otherwise, move to the next item, or loop back to the first
             var $nextItem = $activeItem.next('.faq_item');
             if ($nextItem.length === 0) {
                 $nextItem = $items.first();
