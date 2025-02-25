@@ -185,12 +185,12 @@
   height: 100%;
   -webkit-transform-origin: top center;
           transform-origin: top center;
-  -webkit-transform: scale(calc(1.2 + var(--y-percent) * 0.3)) rotateX(15deg) rotateY(calc(var(--x-percent) * -40deg)) rotateZ(calc(var(--x-percent) * 10deg)) translateX(-10%);
-          transform: scale(calc(1.2 + var(--y-percent) * 0.3)) rotateX(15deg) rotateY(calc(var(--x-percent) * -40deg)) rotateZ(calc(var(--x-percent) * 10deg)) translateX(-10%);
-  -webkit-perspective: 399px;
-          perspective: 399px;
-  -webkit-perspective-origin: 50% 50%;
-          perspective-origin: 50% 50%;
+  -webkit-transform: scale(calc(1 + var(--y-percent) * 0.5)) translateX(-10%) rotateX(calc(11deg + var(--y-percent) * 6deg)) rotateY(calc(-3deg + var(--x-percent) * -10deg)) rotateZ(calc(1deg + var(--x-percent) * 4deg)) translateX(-26px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+          transform: scale(calc(1 + var(--y-percent) * 0.5)) translateX(-10%) rotateX(calc(11deg + var(--y-percent) * 6deg)) rotateY(calc(-3deg + var(--x-percent) * -10deg)) rotateZ(calc(1deg + var(--x-percent) * 4deg)) translateX(-26px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  -webkit-perspective: calc(250px + var(--y-percent) * 100px);
+          perspective: calc(250px + var(--y-percent) * 100px);
+  -webkit-perspective-origin: 48% 62%;
+          perspective-origin: 48% 62%;
 }
 .scrolling_showcase .left_side, .scrolling_showcase .right_side {
   display: -webkit-box;
