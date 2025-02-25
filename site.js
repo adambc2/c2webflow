@@ -145,6 +145,25 @@ jQuery(document).ready(function () {
             updateQuoteSize();
         });
     });
+
+    $(document).mousemove(function (event) {
+        let xPercent = event.clientX / window.innerWidth;
+        let yPercent = event.clientY / window.innerHeight;
+
+        // Set x and y percentages as CSS variables
+        $("body").css({
+            "--x-percent": xPercent,
+            "--y-percent": yPercent
+        });
+
+        // Calculate durations: faster animation at lower Y (top), slower at higher Y (bottom)
+        // Duration range: Left side (20s to 80s), Right side (15s to 60s)
+        const leftDuration = (1 - yPercent) * 60 + 40;   // from 80s to 20s
+        const rightDuration = (1 - yPercent) * 45 + 45;  // from 60s to 15s
+
+        $(".left_side").css("--left-duration", `${leftDuration}s`);
+        $(".right_side").css("--right-duration", `${rightDuration}s`);
+    });
 });
 
 function cycleFaqItems() {
