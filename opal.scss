@@ -1,0 +1,196 @@
+@import "breakpoints.scss";
+@layer inline, external;
+
+@keyframes driftRadial1 {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    33% {
+        transform: translate(100px, 80px);
+    }
+
+    66% {
+        transform: translate(60px, -60px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes driftRadial2 {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    33% {
+        transform: translate(-120px, -100px);
+    }
+
+    66% {
+        transform: translate(-80px, 70px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+@keyframes opalPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.04);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    70% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+body .section_industry-header {
+    &.opal_section {
+        padding-top: 100px;
+        position: relative;
+        overflow: hidden;
+
+        .radial1,
+        .radial2 {
+            position: absolute;
+            width: 180%;
+            height: 150%;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .radial2 {
+            width: 150%;
+            height: 200%;
+        }
+
+        .radial1 {
+            top: -60%;
+            left: -60%;
+            background: radial-gradient(circle, #2F2F2F 0%, transparent 25%);
+            animation: driftRadial1 18s ease-in-out infinite alternate;
+        }
+
+        .radial2 {
+            bottom: -60%;
+            right: -60%;
+            background: radial-gradient(circle, #5F5F5F 0%, transparent 35%);
+            animation: driftRadial2 10s ease-in-out infinite alternate;
+        }
+
+
+        > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero_2025:before {
+            display: none;
+        }
+
+        .hero_2025 {
+            .hero_info {
+                margin: 100px 20px 100px 0;
+                max-width: 90%;
+
+
+
+                h1 {
+                    text-transform: uppercase;
+                    font-size: 60px;
+                    line-height:1;
+
+                    @include displayFrom(md) {
+                        font-size: 80px;
+                        line-height: 82px;
+                    }
+                }
+
+                h1 em {
+                    font-style: initial;
+                    background: linear-gradient(90deg, #861DFF 1.92%, #0CF 50.48%, #0037FF 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text; // Required for WebKit browsers
+                    -webkit-text-fill-color: transparent; // Required to make gradient visible
+                }
+            }
+
+            .hero_image {
+                max-width: 90%;
+            }
+        }
+
+        .opal_image img {
+            max-width: 400px;
+            animation: opalPulse 9s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        .border-button {
+            border: 1px solid var(--Test-Dark, #1A1A1A);
+            background: linear-gradient(90deg, #861DFF 0%, #0CF 50.48%, #0037FF 100%);
+        }
+    }
+}
+
+
+body .main-wrapper.opal_wrapper {
+    .our_approach_section {
+        .approach_header {
+            gap: 2rem;
+        }
+    }
+
+    .section_optimizely {
+
+        .optimizely_intro {
+            gap: 2rem;
+            max-width: 100%;
+        }
+
+        h3 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            margin-bottom: 0;
+        }
+
+        .number_stat {
+            @include displayTo(lg){
+                width:auto;
+            }
+            .stat_number {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+
+        .optimizely_header:last-child {
+            margin: 0;
+
+            .optimizely_intro.borderbottom {
+                padding-bottom: 100px;
+            }
+        }
+    }
+
+    .hs-submit .actions .hs-button {
+        text-transform:uppercase;
+        background: linear-gradient(90deg, #861DFF 0%, #0CF 50.48%, #0037FF 100%);
+    }
+}
